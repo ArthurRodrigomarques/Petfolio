@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Petfolio.Application.UseCases.Pet.Register;
 using Petfolio.Communication.Requests;
 using Petfolio.Communication.Responses;
 
@@ -14,6 +15,8 @@ public class PetController : ControllerBase
     {
         //business logic
 
-        return Created();
+        var response = new RegisterPetUseCase().Execute(request);
+
+        return Created(string.Empty, response);
     }
 }
